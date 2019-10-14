@@ -1,3 +1,5 @@
+#config.py
+
 class Config(object):
     """
     Common configurations
