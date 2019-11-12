@@ -63,6 +63,10 @@ class Department(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(60), unique=True)
     description = db.Column(db.String(200))
+    Normalside = db.Column(db.String(5))
+    AccCategory = db.Column(db.String(25))
+    SaccCategory = db.Column(db.String(25))
+    iBalance = db.Column(db.Numeric(8,2))
     employees = db.relationship('Employee', backref='department',
                                 lazy='dynamic')
 
@@ -80,6 +84,9 @@ class Role(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(60), unique=True)
     description = db.Column(db.String(200))
+    Normalside = db.Column(db.String(5))
+    AccCategory = db.Column(db.String(25))
+    iBalance = db.Column(db.Numeric(8,2))
     employees = db.relationship('Employee', backref='role',
                                 lazy='dynamic')
 

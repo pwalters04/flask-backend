@@ -11,7 +11,7 @@
         <br/>
         {{ utils.flashed_messages() }}
         <br/>
-        <h1 style="text-align:center;">Departments</h1>
+        <h1 style="text-align:center;">Chart of Accounts</h1>
         {% if departments %}
           <hr class="intro-divider">
           <div class="center">
@@ -20,6 +20,10 @@
                 <tr>
                   <th width="15%"> Name </th>
                   <th width="40%"> Description </th>
+                  <th width="15%"> Normal side </th>
+                  <th width="15%"> Account catergory </th>
+                  <th width="15%"> Sub-Account catergory </th>
+                  <th width="15%"> Initial Balance </th>
                   <th width="15%"> Employee Count </th>
                   <th width="15%"> Edit </th>
                   <th width="15%"> Delete </th>
@@ -30,6 +34,10 @@
                 <tr>
                   <td> {{ department.name }} </td>
                   <td> {{ department.description }} </td>
+                  <td> {{ department.Normalside }} </td>
+                  <td> {{ department.AccCategory }} </td>
+                  <td> {{ department.SaccCategory }} </td>
+                  <td> {{ department.iBalance }} </td>
                   <td>
                     {% if department.employees %}
                       {{ department.employees.count() }}
@@ -60,7 +68,7 @@
         {% endif %}
           <a href="{{ url_for('admin.add_department') }}" class="btn btn-default btn-lg">
             <i class="fa fa-plus"></i>
-            Add Department
+            Add Entry
           </a>
         </div>
       </div>

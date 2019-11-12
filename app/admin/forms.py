@@ -3,6 +3,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, DecimalField
 from wtforms.validators import DataRequired
+import decimal
 
 
 class DepartmentForm(FlaskForm):
@@ -11,18 +12,20 @@ class DepartmentForm(FlaskForm):
     """
     name = StringField('Accountant name', validators=[DataRequired()])
     description = StringField('Accountant description', validators=[DataRequired()])
-    #normal side
-    #Account catergory
-    #Account sub-catergory
-    #initial balance
+    Normalside = StringField('Normal Side', validators=[DataRequired()])
+    AccCategory = StringField('Account category', validators=[DataRequired()])
+    SaccCategory = StringField('Sub-Account category', validators=[DataRequired()])
+    iBalance = DecimalField ('Initital balance', places= 2,validators=[DataRequired()] )
     #debit
     #credit
     #balance
-    #date/time added
-    #user id
-    #order
+    #Dtime
+    #employeeiD
+    #OrderiD
     #Statement
     #Comment
 
-    amount = DecimalField('Amount', validators=[DataRequired()])
+
     submit = SubmitField('Submit')
+
+    #StringField('', validators=[DataRequired])

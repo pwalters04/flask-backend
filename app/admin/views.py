@@ -47,7 +47,11 @@ def add_department():
     form = DepartmentForm()
     if form.validate_on_submit():
         department = Department(name=form.name.data,
-                                description=form.description.data)
+                                description=form.description.data,
+                                Normalside = form.Normalside.data,
+                                AccCategory = form.AccCategory.data,
+                                SaccCategory = form.SaccCategory.data,
+                                iBalance = form.iBalance.data)
         try:
             # add department to the database
             db.session.add(department)
@@ -70,7 +74,7 @@ def add_department():
 @login_required
 def edit_department(id):
     """
-    Edit a department
+    Edit an entry
     """
     check_admin()
 
@@ -81,17 +85,28 @@ def edit_department(id):
     if form.validate_on_submit():
         department.name = form.name.data
         department.description = form.description.data
+        department.Normalside = form.Normalside.data
+        department.AccCategory = form.AccCategory.data
+        department.SaccCategory = form.SaccCategory.data
+        department.iBalance = form.iBalance.data
+    
+        
         db.session.commit()
-        flash('You have successfully edited the department.')
+        flash('You have successfully edited the entry.')
 
         # redirect to the departments page
         return redirect(url_for('admin.list_departments'))
 
     form.description.data = department.description
     form.name.data = department.name
+    form.Normalside.data = department.Normalside
+    form.AccCategory.data = department.AccCategory
+    form.SaccCategory.data = department.SaccCategory
+    form.iBalance.data = department.iBalance
+    
     return render_template('admin/departments/department.html', action="Edit",
                            add_department=add_department, form=form,
-                           department=department, title="Edit Department")
+                           department=department, title="Edit Entry")
 
 
 @admin.route('/departments/delete/<int:id>', methods=['GET', 'POST'])
@@ -105,7 +120,7 @@ def delete_department(id):
     department = Department.query.get_or_404(id)
     db.session.delete(department)
     db.session.commit()
-    flash('You have successfully deleted the department.')
+    flash('You have successfully deleted the entry.')
 
     # redirect to the departments page
     return redirect(url_for('admin.list_departments'))
