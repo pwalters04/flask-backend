@@ -51,15 +51,16 @@ def add_department():
                                 Normalside = form.Normalside.data,
                                 AccCategory = form.AccCategory.data,
                                 SaccCategory = form.SaccCategory.data,
-                                iBalance = form.iBalance.data)
+                                iBalance = form.iBalance.data,
+                                debit = form.debit.data)
         try:
             # add department to the database
             db.session.add(department)
             db.session.commit()
-            flash('You have successfully added a new department.')
+            flash('You have successfully added a new entry.')
         except:
             # in case department name already exists
-            flash('Error: department name already exists.')
+            flash('Error: entry name already exists.')
 
         # redirect to departments page
         return redirect(url_for('admin.list_departments'))
@@ -89,6 +90,7 @@ def edit_department(id):
         department.AccCategory = form.AccCategory.data
         department.SaccCategory = form.SaccCategory.data
         department.iBalance = form.iBalance.data
+        department.debit = form.debit.data
     
         
         db.session.commit()
@@ -103,6 +105,7 @@ def edit_department(id):
     form.AccCategory.data = department.AccCategory
     form.SaccCategory.data = department.SaccCategory
     form.iBalance.data = department.iBalance
+    form.debit.data = department.debit
     
     return render_template('admin/departments/department.html', action="Edit",
                            add_department=add_department, form=form,

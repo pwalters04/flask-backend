@@ -67,6 +67,7 @@ class Department(db.Model):
     AccCategory = db.Column(db.String(25))
     SaccCategory = db.Column(db.String(25))
     iBalance = db.Column(db.Numeric(8,2))
+    debit = db.Column(db.Numeric(8,2))
     employees = db.relationship('Employee', backref='department',
                                 lazy='dynamic')
 
@@ -87,6 +88,7 @@ class Role(db.Model):
     Normalside = db.Column(db.String(5))
     AccCategory = db.Column(db.String(25))
     iBalance = db.Column(db.Numeric(8,2))
+    debit = db.Column(db.Numeric(8,2))
     employees = db.relationship('Employee', backref='role',
                                 lazy='dynamic')
 

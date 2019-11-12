@@ -24,6 +24,7 @@
                   <th width="15%"> Account catergory </th>
                   <th width="15%"> Sub-Account catergory </th>
                   <th width="15%"> Initial Balance </th>
+                  <th width="15%"> Debit</th>
                   <th width="15%"> Employee Count </th>
                   <th width="15%"> Edit </th>
                   <th width="15%"> Delete </th>
@@ -38,6 +39,7 @@
                   <td> {{ department.AccCategory }} </td>
                   <td> {{ department.SaccCategory }} </td>
                   <td> {{ department.iBalance }} </td>
+                  <td> {{ department.debit }} </td>
                   <td>
                     {% if department.employees %}
                       {{ department.employees.count() }}
