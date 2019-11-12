@@ -1,3 +1,4 @@
+# app/home/__init__.py
 from flask import Blueprint
 
 admin = Blueprint('home', __name__)
