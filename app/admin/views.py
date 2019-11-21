@@ -47,6 +47,7 @@ def add_department():
     form = DepartmentForm()
     if form.validate_on_submit():
         department = Department(name=form.name.data,
+                                description = form.description.data,
                                 Normalside = form.Normalside.data,
                                 AccCategory = form.AccCategory.data,
                                 SaccCategory = form.SaccCategory.data,
@@ -89,6 +90,7 @@ def edit_department(id):
     form = DepartmentForm(obj=department)
     if form.validate_on_submit():
         department.name = form.name.data
+        department.description = form.description.data
         department.Normalside = form.Normalside.data
         department.AccCategory = form.AccCategory.data
         department.SaccCategory = form.SaccCategory.data
@@ -107,8 +109,9 @@ def edit_department(id):
         # redirect to the departments page
         return redirect(url_for('admin.list_departments'))
 
-    form.description.data = department.description
+    
     form.name.data = department.name
+    form.description.data = department.description
     form.Normalside.data = department.Normalside
     form.AccCategory.data = department.AccCategory
     form.SaccCategory.data = department.SaccCategory
