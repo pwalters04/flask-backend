@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>The Accountant</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+  <div class="d-flex bd-highlight mb-3">
+    <div class="p-2 bd-highlight">
+      <h2 class="mr-3 ml-2">Journalize </h2>
+    </div>
+    <div class="p-2 bd-highlight">
+      <button type="button" name="addentry" class="ml-1 mt-2 btn-primary rounded pl-3 pr-3">
+        Add
+      </button>
+    </div>
+
+    <div class="ml-auto p-2 bd-highlight mt-1">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control rounded" placeholder="Search">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary rounded text-white bg-primary" type="button">Search</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <form class="mb-5">
+    <div class="row">
+      <div class="col-sm-2">
+        <input type="date" class="form-control">
+      </div>
+      <div class="col-sm-2">
+        <input type="date" class="form-control" >
+      </div>
+      <button type="submit" name="button" class="btn-primary rounded pl-3 pr-2">Filter</button>
+    </div>
+  </form>
+
+  <table class="table table-bordered" id="flights">
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Type</th>
+        <th scope="col" >Creator</th>
+        <th scope="col">Account</th>
+        <th scope="col">Debit</th>
+        <th scope="col">Credit</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for journal in journals %}
+      <tr id={{ journal.id }}>
+        <th scope="row" >{{ journal.date }}</th>
+        <td>{{ journal.type }}</td>
+        <td>{{ journal.creator }}</td>
+        <td>{{ journal.account }}</td>
+        <td>{{ journal.debit }}</td>
+        <td>{{ journal.credit }}</td>
+      </tr>
+      <tr>
+          {% endfor %}
+    </tbody>
+  </table>
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

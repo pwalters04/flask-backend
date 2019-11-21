@@ -8,7 +8,6 @@
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
 </head>
 <body>
     <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
@@ -24,19 +23,23 @@
           </div>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
-                  <li><a href="{{ url_for('home.homepage') }}">Home</a></li>
-                  <li><a href="{{ url_for('auth.register') }}"">Register</a></li>
-                  <li><a href="{{ url_for('auth.login') }}">Login</a></li>
-                  <li><a href="{{ url_for('admin.list_departments') }}">Departments</a></li>
                   {% if current_user.is_authenticated %}
-                  <li><a href="{{ url_for('home.dashboard') }}">Dashboard</a></li>
-                  <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
-                  <li><a><i class="fa fa-user"></i>  Hi, {{ current_user.username }}!</a></li>
-                {% else %}
-                  <li><a href="{{ url_for('home.homepage') }}">Home</a></li>
-                  <li><a href="{{ url_for('auth.register') }}">Register</a></li>
-                  <li><a href="{{ url_for('auth.login') }}">Login</a></li>
-                {% endif %}
+                    {% if current_user.is_admin %}
+                      <li><a href="{{ url_for('home.admin_dashboard') }}">Dashboard</a></li>
+                      <li><a href="{{ url_for('admin.list_departments') }}">Entries</a></li>
+                      <li><a href="{{ url_for('admin.list_roles') }}">Roles</a></li>
+                      <li><a href="{{ url_for('admin.list_employees') }}">Employees</a></li>
+                      <li><a href="{{ url_for('admin.list_account') }}">Accounts</a></li>
+                      {% else %}
+                        <li><a href="{{ url_for('home.dashboard') }}">Dashboard</a></li>
+                      {% endif %}
+                      <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+                      <li><a><i class="fa fa-user"></i>  Hi, {{ current_user.username }}!</a></li>
+                  {% else %}
+                    <li><a href="{{ url_for('home.homepage') }}">Home</a></li>
+                    <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+                    <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+                  {% endif %}
               </ul>
           </div>
         </div>
@@ -71,5 +74,7 @@
             </div>
         </div>
     </footer>
+    <script src ="https://kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+    <script src="sorttable.js"></script>
 </body>
 </html>
