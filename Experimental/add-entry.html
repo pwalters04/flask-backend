@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>The Accountant</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+  <div >
+    <label>Entry Type:</label>
+    <select id="entry-type" class="form-control">
+      <option>Select</option>
+    </select>
+  </div>
+  <div class="bs-example">
+    <form>
+      <div class="form-row headings">
+        <div class="col-sm-4">
+          <label for="account-names">Account</label>
+        </div>
+        <div class="col-sm-4">
+          <label for="debits"> Debit Amount($):</label>
+        </div>
+        <div class="col-sm-4">
+          <label for="credits"> Credits Amount($):</label>
+        </div>
+      </div>
+      <div class ="form-row ">
+        <div class="col-sm-4">
+          <select id="account-names" class="form-control"> <option>Select</option>
+          </select>
+        </div>
+        <div class ="col-sm-4">
+          <input type="number" class="form-control" id="debits">
+        </div>
+        <div class ="col-sm-4">
+          <input type="number" class="form-control" id="credits">
+          <br>
+        </div>
+      </div>
+      <div class ="footer">
+        <div style="text-align: left;">
+          <input type="button" class="btn btn-lg btn-block edit" id="addrow" value="Add Row" />
+          <a class="deleteRow"></a>
+        </div>
+        <div colspan="5" style="text-align: left;">
+          <label>Note:</label>
+          <textarea class="form-control" colspan="5" id="comment"></textarea>
+
+        </div>
+        <div class="recp-uploader mt-3">
+          <div>
+            <label for="file" >Choose file to upload</label>
+            <input type="file" id="file" name="file" multiple>
+          </div>
+        </div>
+        <div class ="form-row buttons mt-2 float-right">
+          <input type = "submit" name = "submit" value = "Submit" class="btn-primary bt buttons mr-2"/>
+          <input type = "reset" name = "reset"  value = "Reset" class ="button-space btn-danger bt buttons"/>
+        </div>
+      </div>
+
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
