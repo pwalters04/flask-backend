@@ -14,21 +14,21 @@ class DepartmentForm(FlaskForm):
     Form for admin to add or edit a department
     """
    
-    
+    accNum = IntegerField('Account Number', validators=[DataRequired()])
     name = StringField('Accountant Name', validators=[DataRequired()])
-    description = StringField('Accountant description', validators=[DataRequired()])
-    Normalside = SelectField('Normal side', choices = [('Right','Right'),('Left','Left')])
+    #description = StringField('Accountant description', validators=[DataRequired()])
+    #Normalside = SelectField('Normal side', choices = [('Right','Right'),('Left','Left')])
     AccCategory = SelectField('Account catergory', choices = [('asset','asset'),('liability','liability'),('expense','expense'),('revenue','revenue'),('equity','equity')])
-    SaccCategory = SelectField('Sub-Category', choices = [('Accounts Payable','Accounts Payable'),('Accounts Recieveable','Accounts Recieveable'),('Cash','Cash'),('Interest on loan','Interest on loan')])
-    iBalance = DecimalField ('Initital balance', places= 2,validators=[DataRequired()])
-    debit = DecimalField ('debit', places= 2,validators=[DataRequired()])
-    credit = DecimalField ('Credit', places= 2,validators=[DataRequired()])
+    #SaccCategory = SelectField('Sub-Category', choices = [('Accounts Payable','Accounts Payable'),('Accounts Recieveable','Accounts Recieveable'),('Cash','Cash'),('Interest on loan','Interest on loan')])
+    #iBalance = DecimalField ('Initital balance', places= 2,validators=[DataRequired()])
+    #debit = DecimalField ('debit', places= 2,validators=[DataRequired()])
+    #credit = DecimalField ('Credit', places= 2,validators=[DataRequired()])
     balance = DecimalField ('Balance', places= 2,)
-    Dtime = DateTimeField ('time posted(EDT)',format ='%Y-%m-%d %H:%M:%S',default= datetime.datetime.now())
+    Dtime = DateTimeField ('time posted(EDT)',format ='%Y-%m-%d    %H:%M:%S',default= datetime.datetime.now())
     #employeeiD
     #orderiD
-    statement = SelectField('Statement', choices = [('IS','Income Statement'),('BS','Balance sheet'),('RE','Retained earnings statement')])
-    Comment = StringField('Comment', validators=[DataRequired()])
+    #statement = SelectField('Statement', choices = [('IS','Income Statement'),('BS','Balance sheet'),('RE','Retained earnings statement')])
+    Comment = StringField('Comment')
 
 
     submit = SubmitField('Submit')
@@ -70,9 +70,7 @@ class AccountForm(FlaskForm):
     #employeeiD
     #orderiD
     #statement = SelectField('Statement', choices = [('IS','Income Statement'),('BS','Balance sheet'),('RE','Retained earnings statement')])
-    Comment = StringField('Comment', validators=[DataRequired()])
-    
-
+    Comment = StringField('Comment')
     submit = SubmitField('Submit')
 
     #StringField('', validators=[DataRequired])
