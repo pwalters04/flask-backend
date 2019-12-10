@@ -31,7 +31,7 @@ def list_departments():
     departments = Department.query.all()
 
     return render_template('admin/departments/departments.html',
-                           departments=departments, title="Entries")
+                           departments=departments, title="Chart of Accounts")
 
 
 @admin.route('/departments/add', methods=['GET', 'POST'])
@@ -46,17 +46,18 @@ def add_department():
 
     form = DepartmentForm()
     if form.validate_on_submit():
-        department = Department(name=form.name.data,
-                                description = form.description.data,
-                                Normalside = form.Normalside.data,
+        department = Department(accNum= form.accNum.data,
+                                name= form.name.data,
+                                #description = form.description.data,
+                                #Normalside = form.Normalside.data,
                                 AccCategory = form.AccCategory.data,
-                                SaccCategory = form.SaccCategory.data,
-                                iBalance = form.iBalance.data,
-                                debit = form.debit.data,
-                                credit = form.credit.data,
+                                #SaccCategory = form.SaccCategory.data,
+                                #iBalance = form.iBalance.data,
+                                #debit = form.debit.data,
+                                #credit = form.credit.data,
                                 balance = form.balance.data,
                                 Dtime = form.Dtime.data,
-                                statement = form.statement.data,
+                                #statement = form.statement.data,
                                 Comment = form.Comment.data)
         try:
             # add department to the database
@@ -73,7 +74,7 @@ def add_department():
     # load department template
     return render_template('admin/departments/department.html', action="Add",
                            add_department=add_department, form=form,
-                           title="Add Department")
+                           title="Add Account")
 
 
 @admin.route('/departments/edit/<int:id>', methods=['GET', 'POST'])
@@ -89,43 +90,44 @@ def edit_department(id):
     department = Department.query.get_or_404(id)
     form = DepartmentForm(obj=department)
     if form.validate_on_submit():
+        department.accNum = form.accNum.data
         department.name = form.name.data
-        department.description = form.description.data
-        department.Normalside = form.Normalside.data
+        #department.description = form.description.data
+        #department.Normalside = form.Normalside.data
         department.AccCategory = form.AccCategory.data
-        department.SaccCategory = form.SaccCategory.data
-        department.iBalance = form.iBalance.data
-        department.debit = form.debit.data
-        department.credit = form.credit.data
+        #department.SaccCategory = form.SaccCategory.data
+        #department.iBalance = form.iBalance.data
+        #department.debit = form.debit.data
+        #department.credit = form.credit.data
         department.balance = form.balance.data
         department.Dtime = form.Dtime.data
-        department.statement =form.statement.data
+        #department.statement =form.statement.data
         department.Comment = form.Comment.data
     
         
         db.session.commit()
-        flash('You have successfully edited the entry.')
+        flash('You have successfully edited the account.')
 
         # redirect to the departments page
         return redirect(url_for('admin.list_departments'))
 
-    
+    form.accNum.data = department.accNum
     form.name.data = department.name
-    form.description.data = department.description
-    form.Normalside.data = department.Normalside
+    #form.description.data = department.description
+    #form.Normalside.data = department.Normalside
     form.AccCategory.data = department.AccCategory
-    form.SaccCategory.data = department.SaccCategory
-    form.iBalance.data = department.iBalance
-    form.debit.data = department.debit
-    form.credit.data = department.credit
+    #form.SaccCategory.data = department.SaccCategory
+    #form.iBalance.data = department.iBalance
+    #form.debit.data = department.debit
+    #form.credit.data = department.credit
     form.balance.data = department.balance
     form.Dtime.data = department.Dtime
-    form.statement.data = department.statement
+    #form.statement.data = department.statement
     form.Comment.data = department.Comment
     
     return render_template('admin/departments/department.html', action="Edit",
                            add_department=add_department, form=form,
-                           department=department, title="Edit Entry")
+                           department=department, title="Edit account")
 
 
 @admin.route('/departments/delete/<int:id>', methods=['GET', 'POST'])
@@ -139,7 +141,7 @@ def delete_department(id):
     department = Department.query.get_or_404(id)
     db.session.delete(department)
     db.session.commit()
-    flash('You have successfully deleted the entry.')
+    flash('You have successfully deleted the Account.')
 
     # redirect to the departments page
     return redirect(url_for('admin.list_departments'))
